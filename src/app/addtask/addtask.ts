@@ -107,8 +107,14 @@ export class Addtask {
 		this.hidden_event.emit(this.hidden)
 		
 	}
+	checkIDX(){
+		if (localStorage.key(0) === null){
+			localStorage.setItem("idx", String(0))
+		}
+	}
 	addTask(){
-		var len = localStorage.length
+		this.checkIDX()
+		var len = Number(localStorage.getItem("idx")) + 1
 	
 		var title = document.querySelector("input")?.value
 		var description = document.querySelector("textarea")?.value
@@ -117,6 +123,8 @@ export class Addtask {
 		}else{
 			var task = JSON.stringify({ title: title, description: description })
 			localStorage.setItem(len.toString(), task)
+			localStorage.setItem("idx", String(len))
+
 		}
 		this.close()
 	}

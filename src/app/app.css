@@ -1,0 +1,25 @@
+div {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold
+	
+}
+
+
+button {
+    background-color: gray; /* Green background */
+    font-weight: bold; 
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block element */
+    font-size: 24px; /* Increase font size */
+    margin: 4px 2px; /* Margin for spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+

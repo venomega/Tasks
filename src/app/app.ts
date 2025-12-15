@@ -1,4 +1,4 @@
-import { Component, signal, Output } from '@angular/core';
+import { Component, signal, Output, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { List } from './list/list';
 import { Addtask } from './addtask/addtask';
@@ -8,24 +8,28 @@ import { Addtask } from './addtask/addtask';
   imports: [List, Addtask ],
   template: `
   <div>
-  <h2>Task</h2>
-  <button (click)="activate()">+</button>
+	  <h2>Task</h2>
+	  <button (click)="activate()">+</button>
   </div>
   @if(hidden){
-	  <app-addtask (hidden_event)="deactivate()"></app-addtask>
+	  <app-addtask (hidden_event)="deactivate()" (new_task)="new_task()" ></app-addtask>
   }
-  <app-list />
+  <app-list (eloutput)="new_task()" #taskList />
   `,
   //templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
-	
+	@ViewChild('taskList') update_task!: List;  // Use definitive assignment assertion
 	hidden = false
 	activate(){
 		this.hidden = true
 	}
 	deactivate(){
 		this.hidden = false
+	}
+	new_task(){
+		console.log("new task")
+		this.update_task.incoming()
 	}
 }

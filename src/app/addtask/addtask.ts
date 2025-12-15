@@ -102,6 +102,7 @@ button {
 export class Addtask {
 	hidden = 'true'
 	hidden_event = output<string>();
+	new_task = output<boolean>();
 	close(){
 		this.hidden = 'false'
 		this.hidden_event.emit(this.hidden)
@@ -126,6 +127,7 @@ export class Addtask {
 			localStorage.setItem("idx", String(len))
 
 		}
+		this.new_task.emit(true)
 		this.close()
 	}
 
